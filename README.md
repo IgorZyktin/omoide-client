@@ -129,3 +129,8 @@ client.set_httpx_client(httpx.Client(base_url='https://api.example.com', proxies
 ```
 
 ## Публикация клиента
+
+```shell
+uv build
+uv publish --token <token>
+```
