@@ -3,37 +3,53 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ApiGetVersionV1InfoVersionGetResponseApiGetVersionV1InfoVersionGet")
+T = TypeVar("T", bound="VersionOutput")
 
 
 @_attrs_define
-class ApiGetVersionV1InfoVersionGetResponseApiGetVersionV1InfoVersionGet:
-    """ """
+class VersionOutput:
+    """API version response.
 
-    additional_properties: Dict[str, str] = _attrs_field(init=False, factory=dict)
+    Attributes:
+        version (str):
+    """
+
+    version: str
+    additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        version = self.version
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "version": version,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        api_get_version_v1_info_version_get_response_api_get_version_v1_info_version_get = cls()
+        version = d.pop("version")
 
-        api_get_version_v1_info_version_get_response_api_get_version_v1_info_version_get.additional_properties = d
-        return api_get_version_v1_info_version_get_response_api_get_version_v1_info_version_get
+        version_output = cls(
+            version=version,
+        )
+
+        version_output.additional_properties = d
+        return version_output
 
     @property
     def additional_keys(self) -> List[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> str:
+    def __getitem__(self, key: str) -> Any:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: str) -> None:
+    def __setitem__(self, key: str, value: Any) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

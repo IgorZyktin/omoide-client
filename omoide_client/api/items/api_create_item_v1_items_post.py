@@ -66,7 +66,7 @@ def sync_detailed(
 ) -> Response[Union[HTTPValidationError, OneItemOutput]]:
     """Api Create Item
 
-     Get exising item.
+     Create single item.
 
     Args:
         body (ItemInput): Input info for item creation.
@@ -97,7 +97,7 @@ def sync(
 ) -> Optional[Union[HTTPValidationError, OneItemOutput]]:
     """Api Create Item
 
-     Get exising item.
+     Create single item.
 
     Args:
         body (ItemInput): Input info for item creation.
@@ -123,7 +123,7 @@ async def asyncio_detailed(
 ) -> Response[Union[HTTPValidationError, OneItemOutput]]:
     """Api Create Item
 
-     Get exising item.
+     Create single item.
 
     Args:
         body (ItemInput): Input info for item creation.
@@ -152,7 +152,7 @@ async def asyncio(
 ) -> Optional[Union[HTTPValidationError, OneItemOutput]]:
     """Api Create Item
 
-     Get exising item.
+     Create single item.
 
     Args:
         body (ItemInput): Input info for item creation.

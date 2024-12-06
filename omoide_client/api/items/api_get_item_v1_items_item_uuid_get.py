@@ -55,7 +55,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[Union[HTTPValidationError, OneItemOutput]]:
-    """Api Read Item
+    """Api Get Item
 
      Get exising item.
 
@@ -86,7 +86,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Optional[Union[HTTPValidationError, OneItemOutput]]:
-    """Api Read Item
+    """Api Get Item
 
      Get exising item.
 
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[Union[HTTPValidationError, OneItemOutput]]:
-    """Api Read Item
+    """Api Get Item
 
      Get exising item.
 
@@ -141,7 +141,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Optional[Union[HTTPValidationError, OneItemOutput]]:
-    """Api Read Item
+    """Api Get Item
 
      Get exising item.
 

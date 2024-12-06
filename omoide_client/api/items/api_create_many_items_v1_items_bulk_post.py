@@ -69,7 +69,7 @@ def sync_detailed(
 ) -> Response[Union[HTTPValidationError, ManyItemsOutput]]:
     """Api Create Many Items
 
-     Get exising item.
+     Create many items in one request.
 
     Args:
         body (List['ItemInput']):
@@ -100,7 +100,7 @@ def sync(
 ) -> Optional[Union[HTTPValidationError, ManyItemsOutput]]:
     """Api Create Many Items
 
-     Get exising item.
+     Create many items in one request.
 
     Args:
         body (List['ItemInput']):
@@ -126,7 +126,7 @@ async def asyncio_detailed(
 ) -> Response[Union[HTTPValidationError, ManyItemsOutput]]:
     """Api Create Many Items
 
-     Get exising item.
+     Create many items in one request.
 
     Args:
         body (List['ItemInput']):
@@ -155,7 +155,7 @@ async def asyncio(
 ) -> Optional[Union[HTTPValidationError, ManyItemsOutput]]:
     """Api Create Many Items
 
-     Get exising item.
+     Create many items in one request.
 
     Args:
         body (List['ItemInput']):

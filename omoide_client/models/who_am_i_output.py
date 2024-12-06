@@ -1,37 +1,36 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-if TYPE_CHECKING:
-    from ..models.item_output import ItemOutput
-
-
-T = TypeVar("T", bound="ManyItemsOutput")
+T = TypeVar("T", bound="WhoAmIOutput")
 
 
 @_attrs_define
-class ManyItemsOutput:
-    """Response with many items.
+class WhoAmIOutput:
+    """WhoAmI response.
 
     Attributes:
-        items (List['ItemOutput']):
+        uuid (Union[None, str]):
+        name (str):
     """
 
-    items: List["ItemOutput"]
+    uuid: Union[None, str]
+    name: str
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        items = []
-        for items_item_data in self.items:
-            items_item = items_item_data.to_dict()
-            items.append(items_item)
+        uuid: Union[None, str]
+        uuid = self.uuid
+
+        name = self.name
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "items": items,
+                "uuid": uuid,
+                "name": name,
             }
         )
 
@@ -39,22 +38,24 @@ class ManyItemsOutput:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.item_output import ItemOutput
-
         d = src_dict.copy()
-        items = []
-        _items = d.pop("items")
-        for items_item_data in _items:
-            items_item = ItemOutput.from_dict(items_item_data)
 
-            items.append(items_item)
+        def _parse_uuid(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        many_items_output = cls(
-            items=items,
+        uuid = _parse_uuid(d.pop("uuid"))
+
+        name = d.pop("name")
+
+        who_am_i_output = cls(
+            uuid=uuid,
+            name=name,
         )
 
-        many_items_output.additional_properties = d
-        return many_items_output
+        who_am_i_output.additional_properties = d
+        return who_am_i_output
 
     @property
     def additional_keys(self) -> List[str]:

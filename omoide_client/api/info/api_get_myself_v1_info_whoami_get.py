@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.api_get_myself_v1_info_whoami_get_response_api_get_myself_v1_info_whoami_get import (
-    ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet,
-)
+from ...models.who_am_i_output import WhoAmIOutput
 from ...types import Response
 
 
@@ -20,11 +18,9 @@ def _get_kwargs() -> Dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[WhoAmIOutput]:
     if response.status_code == 200:
-        response_200 = ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet.from_dict(response.json())
+        response_200 = WhoAmIOutput.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -33,9 +29,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[WhoAmIOutput]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +41,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]:
+) -> Response[WhoAmIOutput]:
     """Api Get Myself
 
      Return current user as API sees it.
@@ -57,7 +51,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]
+        Response[WhoAmIOutput]
     """
 
     kwargs = _get_kwargs()
@@ -72,7 +66,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]:
+) -> Optional[WhoAmIOutput]:
     """Api Get Myself
 
      Return current user as API sees it.
@@ -82,7 +76,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet
+        WhoAmIOutput
     """
 
     return sync_detailed(
@@ -93,7 +87,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]:
+) -> Response[WhoAmIOutput]:
     """Api Get Myself
 
      Return current user as API sees it.
@@ -103,7 +97,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]
+        Response[WhoAmIOutput]
     """
 
     kwargs = _get_kwargs()
@@ -116,7 +110,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet]:
+) -> Optional[WhoAmIOutput]:
     """Api Get Myself
 
      Return current user as API sees it.
@@ -126,7 +120,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet
+        WhoAmIOutput
     """
 
     return (

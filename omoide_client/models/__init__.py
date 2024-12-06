@@ -29,15 +29,9 @@ from .api_delete_item_v1_items_item_uuid_delete_desired_switch import ApiDeleteI
 from .api_get_anon_tags_v1_users_anon_known_tags_get_response_api_get_anon_tags_v1_users_anon_known_tags_get import (
     ApiGetAnonTagsV1UsersAnonKnownTagsGetResponseApiGetAnonTagsV1UsersAnonKnownTagsGet,
 )
-from .api_get_myself_v1_info_whoami_get_response_api_get_myself_v1_info_whoami_get import (
-    ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet,
-)
 from .api_get_recent_updates_v1_search_recent_updates_get_order import ApiGetRecentUpdatesV1SearchRecentUpdatesGetOrder
 from .api_get_user_tags_v1_users_user_uuid_known_tags_get_response_api_get_user_tags_v1_users_user_uuid_known_tags_get import (
     ApiGetUserTagsV1UsersUserUuidKnownTagsGetResponseApiGetUserTagsV1UsersUserUuidKnownTagsGet,
-)
-from .api_get_version_v1_info_version_get_response_api_get_version_v1_info_version_get import (
-    ApiGetVersionV1InfoVersionGetResponseApiGetVersionV1InfoVersionGet,
 )
 from .api_home_v1_home_get_order import ApiHomeV1HomeGetOrder
 from .api_item_update_permissions_v1_items_item_uuid_permissions_put_response_api_item_update_permissions_v1_items_item_uuid_permissions_put import (
@@ -99,6 +93,8 @@ from .user_output_extras import UserOutputExtras
 from .user_resource_usage_output import UserResourceUsageOutput
 from .user_value_input import UserValueInput
 from .validation_error import ValidationError
+from .version_output import VersionOutput
+from .who_am_i_output import WhoAmIOutput
 
 __all__ = (
     "ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost",
@@ -112,10 +108,8 @@ __all__ = (
     "ApiDeleteExifV1ExifItemUuidDeleteResponseApiDeleteExifV1ExifItemUuidDelete",
     "ApiDeleteItemV1ItemsItemUuidDeleteDesiredSwitch",
     "ApiGetAnonTagsV1UsersAnonKnownTagsGetResponseApiGetAnonTagsV1UsersAnonKnownTagsGet",
-    "ApiGetMyselfV1InfoWhoamiGetResponseApiGetMyselfV1InfoWhoamiGet",
     "ApiGetRecentUpdatesV1SearchRecentUpdatesGetOrder",
     "ApiGetUserTagsV1UsersUserUuidKnownTagsGetResponseApiGetUserTagsV1UsersUserUuidKnownTagsGet",
-    "ApiGetVersionV1InfoVersionGetResponseApiGetVersionV1InfoVersionGet",
     "ApiHomeV1HomeGetOrder",
     "ApiItemUpdatePermissionsV1ItemsItemUuidPermissionsPutResponseApiItemUpdatePermissionsV1ItemsItemUuidPermissionsPut",
     "ApiRenameItemV1ItemsItemUuidNamePutResponseApiRenameItemV1ItemsItemUuidNamePut",
@@ -158,4 +152,6 @@ __all__ = (
     "UserResourceUsageOutput",
     "UserValueInput",
     "ValidationError",
+    "VersionOutput",
+    "WhoAmIOutput",
 )

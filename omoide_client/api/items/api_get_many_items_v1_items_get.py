@@ -94,7 +94,7 @@ def sync_detailed(
     name: Union[None, Unset, str] = UNSET,
     limit: Union[Unset, int] = 30,
 ) -> Response[Union[HTTPValidationError, ManyItemsOutput]]:
-    """Api Read Many Items
+    """Api Get Many Items
 
      Get exising items.
 
@@ -134,7 +134,7 @@ def sync(
     name: Union[None, Unset, str] = UNSET,
     limit: Union[Unset, int] = 30,
 ) -> Optional[Union[HTTPValidationError, ManyItemsOutput]]:
-    """Api Read Many Items
+    """Api Get Many Items
 
      Get exising items.
 
@@ -169,7 +169,7 @@ async def asyncio_detailed(
     name: Union[None, Unset, str] = UNSET,
     limit: Union[Unset, int] = 30,
 ) -> Response[Union[HTTPValidationError, ManyItemsOutput]]:
-    """Api Read Many Items
+    """Api Get Many Items
 
      Get exising items.
 
@@ -207,7 +207,7 @@ async def asyncio(
     name: Union[None, Unset, str] = UNSET,
     limit: Union[Unset, int] = 30,
 ) -> Optional[Union[HTTPValidationError, ManyItemsOutput]]:
-    """Api Read Many Items
+    """Api Get Many Items
 
      Get exising items.
 

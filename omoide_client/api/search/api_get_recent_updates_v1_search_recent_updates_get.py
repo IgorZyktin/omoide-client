@@ -94,9 +94,6 @@ def sync_detailed(
 
      Return recently updated items.
 
-    Request will find when newest item was updated.
-    And then return all items uploaded at that day.
-
     This endpoint can be used by any registered user,
     but each will get tailored output.
 
@@ -143,9 +140,6 @@ def sync(
 
      Return recently updated items.
 
-    Request will find when newest item was updated.
-    And then return all items uploaded at that day.
-
     This endpoint can be used by any registered user,
     but each will get tailored output.
 
@@ -186,9 +180,6 @@ async def asyncio_detailed(
     """Api Get Recent Updates
 
      Return recently updated items.
-
-    Request will find when newest item was updated.
-    And then return all items uploaded at that day.
 
     This endpoint can be used by any registered user,
     but each will get tailored output.
@@ -233,9 +224,6 @@ async def asyncio(
     """Api Get Recent Updates
 
      Return recently updated items.
-
-    Request will find when newest item was updated.
-    And then return all items uploaded at that day.
 
     This endpoint can be used by any registered user,
     but each will get tailored output.
