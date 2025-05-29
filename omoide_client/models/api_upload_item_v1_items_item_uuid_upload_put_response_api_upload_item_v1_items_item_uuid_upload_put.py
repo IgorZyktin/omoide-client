@@ -3,14 +3,11 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar(
-    "T",
-    bound="ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut",
-)
+T = TypeVar("T", bound="ApiUploadItemV1ItemsItemUuidUploadPutResponseApiUploadItemV1ItemsItemUuidUploadPut")
 
 
 @_attrs_define
-class ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut:
+class ApiUploadItemV1ItemsItemUuidUploadPutResponseApiUploadItemV1ItemsItemUuidUploadPut:
     """ """
 
     additional_properties: Dict[str, str] = _attrs_field(init=False, factory=dict)
@@ -24,10 +21,10 @@ class ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThum
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put_response_api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put = cls()
+        api_upload_item_v1_items_item_uuid_upload_put_response_api_upload_item_v1_items_item_uuid_upload_put = cls()
 
-        api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put_response_api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put.additional_properties = d
-        return api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put_response_api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put
+        api_upload_item_v1_items_item_uuid_upload_put_response_api_upload_item_v1_items_item_uuid_upload_put.additional_properties = d
+        return api_upload_item_v1_items_item_uuid_upload_put_response_api_upload_item_v1_items_item_uuid_upload_put
 
     @property
     def additional_keys(self) -> List[str]:

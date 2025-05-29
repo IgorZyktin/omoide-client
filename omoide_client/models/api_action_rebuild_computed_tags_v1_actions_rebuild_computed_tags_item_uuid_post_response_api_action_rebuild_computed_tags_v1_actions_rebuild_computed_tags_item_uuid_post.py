@@ -5,12 +5,12 @@ from attrs import field as _attrs_field
 
 T = TypeVar(
     "T",
-    bound="ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsPost",
+    bound="ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost",
 )
 
 
 @_attrs_define
-class ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsPost:
+class ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost:
     """ """
 
     additional_properties: Dict[str, Union[None, int, str]] = _attrs_field(init=False, factory=dict)
@@ -25,7 +25,7 @@ class ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsPostResponseApiAct
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_post = cls()
+        api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post = cls()
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():
@@ -39,8 +39,8 @@ class ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsPostResponseApiAct
 
             additional_properties[prop_name] = additional_property
 
-        api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_post.additional_properties = additional_properties
-        return api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_post
+        api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post.additional_properties = additional_properties
+        return api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post
 
     @property
     def additional_keys(self) -> List[str]:

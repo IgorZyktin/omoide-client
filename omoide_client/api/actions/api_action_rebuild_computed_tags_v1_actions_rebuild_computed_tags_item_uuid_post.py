@@ -6,32 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.api_upload_item_preview_v1_items_item_uuid_preview_put_response_api_upload_item_preview_v1_items_item_uuid_preview_put import (
-    ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+from ...models.api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post_response_api_action_rebuild_computed_tags_v1_actions_rebuild_computed_tags_item_uuid_post import (
+    ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
 )
 from ...models.http_validation_error import HTTPValidationError
-from ...models.media_input import MediaInput
 from ...types import Response
 
 
 def _get_kwargs(
     item_uuid: UUID,
-    *,
-    body: MediaInput,
 ) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
-
     _kwargs: Dict[str, Any] = {
-        "method": "put",
-        "url": f"/v1/items/{item_uuid}/preview",
+        "method": "post",
+        "url": f"/v1/actions/rebuild_computed_tags/{item_uuid}",
     }
 
-    _body = body.to_dict()
-
-    _kwargs["json"] = _body
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -39,12 +28,12 @@ def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[
     Union[
-        ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+        ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
         HTTPValidationError,
     ]
 ]:
     if response.status_code == 202:
-        response_202 = ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut.from_dict(
+        response_202 = ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost.from_dict(
             response.json()
         )
 
@@ -63,7 +52,7 @@ def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[
     Union[
-        ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+        ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
         HTTPValidationError,
     ]
 ]:
@@ -79,34 +68,32 @@ def sync_detailed(
     item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Response[
     Union[
-        ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+        ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Preview
+    """Api Action Rebuild Computed Tags
 
-     Store preview data for given item.
+     Recalculate all computed tags for specific user.
 
-    Operation is asynchronous, you will get job_id in response.
+    If `including_children` is set to True, this will also affect all
+    descendants of the item. This operation potentially can take a lot of time.
 
     Args:
         item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut, HTTPValidationError]]
+        Response[Union[ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost, HTTPValidationError]]
     """
 
     kwargs = _get_kwargs(
         item_uuid=item_uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -120,35 +107,33 @@ def sync(
     item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Optional[
     Union[
-        ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+        ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Preview
+    """Api Action Rebuild Computed Tags
 
-     Store preview data for given item.
+     Recalculate all computed tags for specific user.
 
-    Operation is asynchronous, you will get job_id in response.
+    If `including_children` is set to True, this will also affect all
+    descendants of the item. This operation potentially can take a lot of time.
 
     Args:
         item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut, HTTPValidationError]
+        Union[ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost, HTTPValidationError]
     """
 
     return sync_detailed(
         item_uuid=item_uuid,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -156,34 +141,32 @@ async def asyncio_detailed(
     item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Response[
     Union[
-        ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+        ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Preview
+    """Api Action Rebuild Computed Tags
 
-     Store preview data for given item.
+     Recalculate all computed tags for specific user.
 
-    Operation is asynchronous, you will get job_id in response.
+    If `including_children` is set to True, this will also affect all
+    descendants of the item. This operation potentially can take a lot of time.
 
     Args:
         item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut, HTTPValidationError]]
+        Response[Union[ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost, HTTPValidationError]]
     """
 
     kwargs = _get_kwargs(
         item_uuid=item_uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -195,35 +178,33 @@ async def asyncio(
     item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Optional[
     Union[
-        ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut,
+        ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Preview
+    """Api Action Rebuild Computed Tags
 
-     Store preview data for given item.
+     Recalculate all computed tags for specific user.
 
-    Operation is asynchronous, you will get job_id in response.
+    If `including_children` is set to True, this will also affect all
+    descendants of the item. This operation potentially can take a lot of time.
 
     Args:
         item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiUploadItemPreviewV1ItemsItemUuidPreviewPutResponseApiUploadItemPreviewV1ItemsItemUuidPreviewPut, HTTPValidationError]
+        Union[ApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPostResponseApiActionRebuildComputedTagsV1ActionsRebuildComputedTagsItemUuidPost, HTTPValidationError]
     """
 
     return (
         await asyncio_detailed(
             item_uuid=item_uuid,
             client=client,
-            body=body,
         )
     ).parsed

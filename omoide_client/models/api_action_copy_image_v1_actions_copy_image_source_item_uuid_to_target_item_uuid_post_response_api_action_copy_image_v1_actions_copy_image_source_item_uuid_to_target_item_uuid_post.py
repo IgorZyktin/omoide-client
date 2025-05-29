@@ -3,11 +3,14 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost")
+T = TypeVar(
+    "T",
+    bound="ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost",
+)
 
 
 @_attrs_define
-class ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost:
+class ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost:
     """ """
 
     additional_properties: Dict[str, Union[List[str], str]] = _attrs_field(init=False, factory=dict)
@@ -26,9 +29,7 @@ class ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1Action
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        api_action_copy_image_v1_actions_copy_image_post_response_api_action_copy_image_v1_actions_copy_image_post = (
-            cls()
-        )
+        api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post_response_api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post = cls()
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():
@@ -48,10 +49,8 @@ class ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1Action
 
             additional_properties[prop_name] = additional_property
 
-        api_action_copy_image_v1_actions_copy_image_post_response_api_action_copy_image_v1_actions_copy_image_post.additional_properties = additional_properties
-        return (
-            api_action_copy_image_v1_actions_copy_image_post_response_api_action_copy_image_v1_actions_copy_image_post
-        )
+        api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post_response_api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post.additional_properties = additional_properties
+        return api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post_response_api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post
 
     @property
     def additional_keys(self) -> List[str]:

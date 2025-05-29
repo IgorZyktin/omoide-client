@@ -5,12 +5,12 @@ from attrs import field as _attrs_field
 
 T = TypeVar(
     "T",
-    bound="ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost",
+    bound="ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost",
 )
 
 
 @_attrs_define
-class ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost:
+class ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost:
     """ """
 
     additional_properties: Dict[str, Union[int, str]] = _attrs_field(init=False, factory=dict)
@@ -25,7 +25,7 @@ class ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiAct
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post_response_api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post = cls()
+        api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post_response_api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post = cls()
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():
@@ -37,8 +37,8 @@ class ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiAct
 
             additional_properties[prop_name] = additional_property
 
-        api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post_response_api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post.additional_properties = additional_properties
-        return api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post_response_api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post
+        api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post_response_api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post.additional_properties = additional_properties
+        return api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post_response_api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post
 
     @property
     def additional_keys(self) -> List[str]:

@@ -1,48 +1,41 @@
 from http import HTTPStatus
 from typing import Any, Dict, Optional, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.api_action_copy_image_v1_actions_copy_image_post_response_api_action_copy_image_v1_actions_copy_image_post import (
-    ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost,
+from ...models.api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post_response_api_action_copy_image_v1_actions_copy_image_source_item_uuid_to_target_item_uuid_post import (
+    ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
 )
-from ...models.copy_image_input import CopyImageInput
 from ...models.http_validation_error import HTTPValidationError
 from ...types import Response
 
 
 def _get_kwargs(
-    *,
-    body: CopyImageInput,
+    source_item_uuid: UUID,
+    target_item_uuid: UUID,
 ) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
-
     _kwargs: Dict[str, Any] = {
         "method": "post",
-        "url": "/v1/actions/copy_image",
+        "url": f"/v1/actions/copy_image/{source_item_uuid}/to/{target_item_uuid}",
     }
 
-    _body = body.to_dict()
-
-    _kwargs["json"] = _body
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[
-    Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+    Union[
+        ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
+        HTTPValidationError,
+    ]
 ]:
     if response.status_code == 202:
-        response_202 = (
-            ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost.from_dict(
-                response.json()
-            )
+        response_202 = ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost.from_dict(
+            response.json()
         )
 
         return response_202
@@ -59,7 +52,10 @@ def _parse_response(
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[
-    Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+    Union[
+        ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
+        HTTPValidationError,
+    ]
 ]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -70,11 +66,15 @@ def _build_response(
 
 
 def sync_detailed(
+    source_item_uuid: UUID,
+    target_item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: CopyImageInput,
 ) -> Response[
-    Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+    Union[
+        ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
+        HTTPValidationError,
+    ]
 ]:
     """Api Action Copy Image
 
@@ -83,18 +83,20 @@ def sync_detailed(
     This will invoke copying of content, preview and a thumbnail.
 
     Args:
-        body (CopyImageInput): Info about affected items.
+        source_item_uuid (UUID):
+        target_item_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]]
+        Response[Union[ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost, HTTPValidationError]]
     """
 
     kwargs = _get_kwargs(
-        body=body,
+        source_item_uuid=source_item_uuid,
+        target_item_uuid=target_item_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -105,11 +107,15 @@ def sync_detailed(
 
 
 def sync(
+    source_item_uuid: UUID,
+    target_item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: CopyImageInput,
 ) -> Optional[
-    Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+    Union[
+        ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
+        HTTPValidationError,
+    ]
 ]:
     """Api Action Copy Image
 
@@ -118,28 +124,34 @@ def sync(
     This will invoke copying of content, preview and a thumbnail.
 
     Args:
-        body (CopyImageInput): Info about affected items.
+        source_item_uuid (UUID):
+        target_item_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+        Union[ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost, HTTPValidationError]
     """
 
     return sync_detailed(
+        source_item_uuid=source_item_uuid,
+        target_item_uuid=target_item_uuid,
         client=client,
-        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
+    source_item_uuid: UUID,
+    target_item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: CopyImageInput,
 ) -> Response[
-    Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+    Union[
+        ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
+        HTTPValidationError,
+    ]
 ]:
     """Api Action Copy Image
 
@@ -148,18 +160,20 @@ async def asyncio_detailed(
     This will invoke copying of content, preview and a thumbnail.
 
     Args:
-        body (CopyImageInput): Info about affected items.
+        source_item_uuid (UUID):
+        target_item_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]]
+        Response[Union[ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost, HTTPValidationError]]
     """
 
     kwargs = _get_kwargs(
-        body=body,
+        source_item_uuid=source_item_uuid,
+        target_item_uuid=target_item_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -168,11 +182,15 @@ async def asyncio_detailed(
 
 
 async def asyncio(
+    source_item_uuid: UUID,
+    target_item_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: CopyImageInput,
 ) -> Optional[
-    Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+    Union[
+        ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost,
+        HTTPValidationError,
+    ]
 ]:
     """Api Action Copy Image
 
@@ -181,19 +199,21 @@ async def asyncio(
     This will invoke copying of content, preview and a thumbnail.
 
     Args:
-        body (CopyImageInput): Info about affected items.
+        source_item_uuid (UUID):
+        target_item_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiActionCopyImageV1ActionsCopyImagePostResponseApiActionCopyImageV1ActionsCopyImagePost, HTTPValidationError]
+        Union[ApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPostResponseApiActionCopyImageV1ActionsCopyImageSourceItemUuidToTargetItemUuidPost, HTTPValidationError]
     """
 
     return (
         await asyncio_detailed(
+            source_item_uuid=source_item_uuid,
+            target_item_uuid=target_item_uuid,
             client=client,
-            body=body,
         )
     ).parsed

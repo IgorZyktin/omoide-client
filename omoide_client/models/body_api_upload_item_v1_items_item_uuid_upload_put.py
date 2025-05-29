@@ -1,35 +1,47 @@
+from io import BytesIO
 from typing import Any, Dict, List, Type, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="MediaInput")
+from ..types import File
+
+T = TypeVar("T", bound="BodyApiUploadItemV1ItemsItemUuidUploadPut")
 
 
 @_attrs_define
-class MediaInput:
-    """Input info for media creation.
-
+class BodyApiUploadItemV1ItemsItemUuidUploadPut:
+    """
     Attributes:
-        content (str):
-        ext (str):
+        file (File):
     """
 
-    content: str
-    ext: str
+    file: File
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        content = self.content
-
-        ext = self.ext
+        file = self.file.to_tuple()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "content": content,
-                "ext": ext,
+                "file": file,
+            }
+        )
+
+        return field_dict
+
+    def to_multipart(self) -> Dict[str, Any]:
+        file = self.file.to_tuple()
+
+        field_dict: Dict[str, Any] = {}
+        for prop_name, prop in self.additional_properties.items():
+            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
+
+        field_dict.update(
+            {
+                "file": file,
             }
         )
 
@@ -38,17 +50,14 @@ class MediaInput:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        content = d.pop("content")
+        file = File(payload=BytesIO(d.pop("file")))
 
-        ext = d.pop("ext")
-
-        media_input = cls(
-            content=content,
-            ext=ext,
+        body_api_upload_item_v1_items_item_uuid_upload_put = cls(
+            file=file,
         )
 
-        media_input.additional_properties = d
-        return media_input
+        body_api_upload_item_v1_items_item_uuid_upload_put.additional_properties = d
+        return body_api_upload_item_v1_items_item_uuid_upload_put
 
     @property
     def additional_keys(self) -> List[str]:

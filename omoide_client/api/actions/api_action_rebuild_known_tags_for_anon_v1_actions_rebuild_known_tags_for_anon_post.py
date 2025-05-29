@@ -5,8 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post_response_api_action_rebuild_known_tags_all_v1_actions_rebuild_known_tags_all_post import (
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost,
+from ...models.api_action_rebuild_known_tags_for_anon_v1_actions_rebuild_known_tags_for_anon_post_response_api_action_rebuild_known_tags_for_anon_v1_actions_rebuild_known_tags_for_anon_post import (
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost,
 )
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs() -> Dict[str, Any]:
     _kwargs: Dict[str, Any] = {
         "method": "post",
-        "url": "/v1/actions/rebuild_known_tags_all",
+        "url": "/v1/actions/rebuild_known_tags_for_anon",
     }
 
     return _kwargs
@@ -23,10 +23,10 @@ def _get_kwargs() -> Dict[str, Any]:
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
 ]:
     if response.status_code == 202:
-        response_202 = ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost.from_dict(
+        response_202 = ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost.from_dict(
             response.json()
         )
 
@@ -40,7 +40,7 @@ def _parse_response(
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
 ]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -54,18 +54,18 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
 ]:
-    """Api Action Rebuild Known Tags All
+    """Api Action Rebuild Known Tags For Anon
 
-     Recalculate all known tags for registered user.
+     Recalculate all known tags for anon user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost]
+        Response[ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost]
     """
 
     kwargs = _get_kwargs()
@@ -81,18 +81,18 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Optional[
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
 ]:
-    """Api Action Rebuild Known Tags All
+    """Api Action Rebuild Known Tags For Anon
 
-     Recalculate all known tags for registered user.
+     Recalculate all known tags for anon user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+        ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
     """
 
     return sync_detailed(
@@ -104,18 +104,18 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
 ]:
-    """Api Action Rebuild Known Tags All
+    """Api Action Rebuild Known Tags For Anon
 
-     Recalculate all known tags for registered user.
+     Recalculate all known tags for anon user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost]
+        Response[ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost]
     """
 
     kwargs = _get_kwargs()
@@ -129,18 +129,18 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Optional[
-    ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+    ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
 ]:
-    """Api Action Rebuild Known Tags All
+    """Api Action Rebuild Known Tags For Anon
 
-     Recalculate all known tags for registered user.
+     Recalculate all known tags for anon user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPostResponseApiActionRebuildKnownTagsAllV1ActionsRebuildKnownTagsAllPost
+        ApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPostResponseApiActionRebuildKnownTagsForAnonV1ActionsRebuildKnownTagsForAnonPost
     """
 
     return (

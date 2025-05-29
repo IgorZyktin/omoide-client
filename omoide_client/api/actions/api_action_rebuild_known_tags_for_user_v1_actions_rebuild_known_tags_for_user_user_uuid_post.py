@@ -6,32 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put_response_api_upload_item_thumbnail_v1_items_item_uuid_thumbnail_put import (
-    ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+from ...models.api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid_post_response_api_action_rebuild_known_tags_for_user_v1_actions_rebuild_known_tags_for_user_user_uuid import (
+    ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
 )
 from ...models.http_validation_error import HTTPValidationError
-from ...models.media_input import MediaInput
 from ...types import Response
 
 
 def _get_kwargs(
-    item_uuid: UUID,
-    *,
-    body: MediaInput,
+    user_uuid: UUID,
 ) -> Dict[str, Any]:
-    headers: Dict[str, Any] = {}
-
     _kwargs: Dict[str, Any] = {
-        "method": "put",
-        "url": f"/v1/items/{item_uuid}/thumbnail",
+        "method": "post",
+        "url": f"/v1/actions/rebuild_known_tags_for_user/{user_uuid}",
     }
 
-    _body = body.to_dict()
-
-    _kwargs["json"] = _body
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -39,12 +28,12 @@ def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[
     Union[
-        ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+        ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
         HTTPValidationError,
     ]
 ]:
     if response.status_code == 202:
-        response_202 = ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut.from_dict(
+        response_202 = ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost.from_dict(
             response.json()
         )
 
@@ -63,7 +52,7 @@ def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[
     Union[
-        ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+        ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
         HTTPValidationError,
     ]
 ]:
@@ -76,37 +65,32 @@ def _build_response(
 
 
 def sync_detailed(
-    item_uuid: UUID,
+    user_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Response[
     Union[
-        ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+        ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Thumbnail
+    """Api Action Rebuild Known Tags For User
 
-     Store thumbnail data for given item.
-
-    Operation is asynchronous, you will get job_id in response.
+     Recalculate all known tags for registered user.
 
     Args:
-        item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
+        user_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut, HTTPValidationError]]
+        Response[Union[ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost, HTTPValidationError]]
     """
 
     kwargs = _get_kwargs(
-        item_uuid=item_uuid,
-        body=body,
+        user_uuid=user_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -117,73 +101,63 @@ def sync_detailed(
 
 
 def sync(
-    item_uuid: UUID,
+    user_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Optional[
     Union[
-        ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+        ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Thumbnail
+    """Api Action Rebuild Known Tags For User
 
-     Store thumbnail data for given item.
-
-    Operation is asynchronous, you will get job_id in response.
+     Recalculate all known tags for registered user.
 
     Args:
-        item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
+        user_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut, HTTPValidationError]
+        Union[ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost, HTTPValidationError]
     """
 
     return sync_detailed(
-        item_uuid=item_uuid,
+        user_uuid=user_uuid,
         client=client,
-        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    item_uuid: UUID,
+    user_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Response[
     Union[
-        ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+        ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Thumbnail
+    """Api Action Rebuild Known Tags For User
 
-     Store thumbnail data for given item.
-
-    Operation is asynchronous, you will get job_id in response.
+     Recalculate all known tags for registered user.
 
     Args:
-        item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
+        user_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut, HTTPValidationError]]
+        Response[Union[ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost, HTTPValidationError]]
     """
 
     kwargs = _get_kwargs(
-        item_uuid=item_uuid,
-        body=body,
+        user_uuid=user_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -192,38 +166,33 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    item_uuid: UUID,
+    user_uuid: UUID,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: MediaInput,
 ) -> Optional[
     Union[
-        ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut,
+        ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost,
         HTTPValidationError,
     ]
 ]:
-    """Api Upload Item Thumbnail
+    """Api Action Rebuild Known Tags For User
 
-     Store thumbnail data for given item.
-
-    Operation is asynchronous, you will get job_id in response.
+     Recalculate all known tags for registered user.
 
     Args:
-        item_uuid (UUID):
-        body (MediaInput): Input info for media creation.
+        user_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiUploadItemThumbnailV1ItemsItemUuidThumbnailPutResponseApiUploadItemThumbnailV1ItemsItemUuidThumbnailPut, HTTPValidationError]
+        Union[ApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPostResponseApiActionRebuildKnownTagsForUserV1ActionsRebuildKnownTagsForUserUserUuidPost, HTTPValidationError]
     """
 
     return (
         await asyncio_detailed(
-            item_uuid=item_uuid,
+            user_uuid=user_uuid,
             client=client,
-            body=body,
         )
     ).parsed
